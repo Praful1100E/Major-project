@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Major Project — Recorder</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 2rem; }
+    button { margin: .5rem; padding: .5rem 1rem; }
+    pre { background:#f4f4f4; padding:1rem; }
+  </style>
+</head>
+<body>
+  <h1>Speech Recorder (Prototype)</h1>
+  <p>Record a short sample then upload to the backend for analysis.</p>
+  <button id="recordBtn">Start Recording</button>
+  <button id="stopBtn" disabled>Stop</button>
+  <button id="uploadBtn" disabled>Upload</button>
+  <p><audio id="player" controls></audio></p>
+  <h3>Result</h3>
+  <pre id="result">No result yet</pre>
+
+  <script src="recorder.js"></script>
+</body>
+</html>
