@@ -1,24 +1,67 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Major Project — Recorder</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 2rem; }
-    button { margin: .5rem; padding: .5rem 1rem; }
-    pre { background:#f4f4f4; padding:1rem; }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VoiceGuardian — Recorder</title>
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-  <h1>Speech Recorder (Prototype)</h1>
-  <p>Record a short sample then upload to the backend for analysis.</p>
-  <button id="recordBtn">Start Recording</button>
-  <button id="stopBtn" disabled>Stop</button>
-  <button id="uploadBtn" disabled>Upload</button>
-  <p><audio id="player" controls></audio></p>
-  <h3>Result</h3>
-  <pre id="result">No result yet</pre>
+  <main class="container">
+    <header class="header">
+      <div class="hero">
+        <h1>VoiceGuardian</h1>
+        <p class="muted">Early, low-cost cognitive risk screening from speech. Record a short sample and get an instant, shareable report.</p>
+      </div>
+      <aside class="tips">
+        <strong>Recording tips</strong>
+        <ul>
+          <li>Use a quiet room</li>
+          <li>Speak for at least 10 seconds (read a short paragraph)</li>
+          <li>Use the device microphone (smartphone or laptop)</li>
+        </ul>
+      </aside>
+    </header>
 
-  <script src="recorder.js"></script>
+    <section class="card recorder">
+      <div class="controls">
+        <button id="recordBtn" class="btn primary">Start Recording</button>
+        <button id="stopBtn" class="btn" disabled>Stop</button>
+        <button id="uploadBtn" class="btn" disabled>Analyze</button>
+        <button id="downloadBtn" class="btn" disabled title="Download report as JSON">Download</button>
+        <button id="copyLinkBtn" class="btn" disabled title="Copy report view link">Copy Link</button>
+      </div>
+
+      <div class="status-row">
+        <div class="meter">
+          <div id="recordIndicator" class="record-indicator off"></div>
+          <span id="timer">00:00</span>
+        </div>
+        <div class="player-wrap">
+          <audio id="player" controls></audio>
+        </div>
+      </div>
+
+      <div class="progress-row">
+        <progress id="uploadProgress" value="0" max="100" style="width:100%; display:none;"></progress>
+      </div>
+    </section>
+
+    <section class="card results">
+      <h2>Report</h2>
+      <div class="result-summary">
+        <div>Risk:</div>
+        <div id="riskBadge" class="badge neutral">No result</div>
+      </div>
+      <div id="reportLink" class="muted">No report yet</div>
+      <pre id="result" class="result-box">No result yet</pre>
+    </section>
+
+    <footer class="footer muted">
+      <small>Prototype — replace the placeholder model with a trained clinical model for diagnostic use. Backend: http://localhost:8000</small>
+    </footer>
+  </main>
+
+  <script src="./recorder.js"></script>
 </body>
 </html>
